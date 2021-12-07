@@ -7,15 +7,15 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Db\ResultSet\ResultSet;
 
-class CorretorTableFactory implements FactoryInterface
+class ImovelTableFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $adapter = $container->get('DbAdapter');
         $resultSetPrototype = new ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype(new Corretor([]));
-        $tableGateway = new TableGateway('corretores', $adapter, null, $resultSetPrototype);
-        $corretorTable = new CorretorTable($tableGateway);
-        return $corretorTable;
+        $resultSetPrototype->setArrayObjectPrototype(new Imovel([]));
+        $tableGateway = new TableGateway('imoveis', $adapter, null, $resultSetPrototype);
+        $imoveisTable = new ImovelTable($tableGateway);
+        return $imoveisTable;
     }
 }

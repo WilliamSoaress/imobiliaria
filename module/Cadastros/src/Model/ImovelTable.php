@@ -4,7 +4,7 @@ namespace Cadastros\Model;
 
 use Laminas\Db\TableGateway\TableGatewayInterface;
 
-class CorretorTable
+class ImovelTable
 {
     private TableGatewayInterface $tableGateway;
 
@@ -13,9 +13,9 @@ class CorretorTable
         $this->tableGateway = $tableGateway;
     }
 
-    public function gravar(Corretor $corretor)
+    public function gravar(Imovel $imovel)
     {
-        $set = $corretor->toArray();
+        $set = $imovel->toArray();
         if (isset($set['matricula']) && !empty($set['matricula'])) {
             return $this->tableGateway->update($set, ['matricula' => $set['matricula']]);
         }
@@ -37,21 +37,12 @@ class CorretorTable
         $this->tableGateway->delete(['nome' => $nome]);
     }
 
-    public function buscar(int $matricula): Corretor
+    public function buscar(int $matricula): Imovel
     {
-        $corretores = $this->tableGateway->select(['matricula' => $matricula]);
-        if ($corretores->count() != 0) {
-            return $corretores->current();
+        $imoveis = $this->tableGateway->select(['matricula' => $matricula]);
+        if ($imoveis->count() != 0) {
+            return $imoveis->current();
         }
-        return new Corretor([]);
-    }
-
-    public function buscarPorNome($nome): Corretor
-    {
-        $corretores = $this->tableGateway->select(['nome' => $nome]);
-        if ($corretores->count() != 0) {
-            return $corretores->current();
-        }
-        return new Corretor([]);
+        return new Imovel([]);
     }
 }

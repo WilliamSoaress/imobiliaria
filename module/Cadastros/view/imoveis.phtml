@@ -8,14 +8,15 @@ use Laminas\View\View;
 ?>
 <tr>
     <td><a href="<?= $this->url('cadastros', [
-                        'controller' => 'corretor',
+                        'controller' => 'imovel',
                         'action'    => 'editar',
                         'matricula' => $this->matricula
                     ]) ?>"><?= $this->matricula ?></a></td>
-    <td><?= $this->nome ?></td>
+    <td><?= $this->descricao ?></td>
+    <td><?= $this->valor ?></td>
     <td><a href="<?= $this->url('cadastros', [
-                        'controller' => 'corretor',
+                        'controller' => 'imovel',
                         'action'    => 'apagar',
                         'matricula' => $this->matricula
-                    ]) ?>">X</a></td>
+                    ]) ?>">Apagar</a></td>
 </tr>

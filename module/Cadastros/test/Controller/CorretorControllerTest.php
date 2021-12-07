@@ -35,7 +35,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertControllerClass('CorretorController');
         $this->assertMatchedRouteName('cadastros');
     }
-    
+
     public function testApagarActionCanBeAccessed(): void
     {
         $this->dispatch('/cadastros/corretor/apagar', 'GET');
@@ -45,7 +45,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertControllerClass('CorretorController');
         $this->assertMatchedRouteName('cadastros');
     }
-    
+
     public function testEditarActionCanBeAccessed(): void
     {
         $this->dispatch('/cadastros/corretor/editar', 'GET');
@@ -55,7 +55,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertControllerClass('CorretorController');
         $this->assertMatchedRouteName('cadastros');
     }
-    
+
     public function testGravarActionCanBeAccessed(): void
     {
         $_POST = [
@@ -72,5 +72,4 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertEquals('Teste', $corretor->nome);
         $corretorTable->apagarPorNome('Teste');
     }
-    
 }
